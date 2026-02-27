@@ -213,16 +213,15 @@ const DocspineLanding = () => {
         <h2 style={{ fontFamily: serif, fontSize: "2rem", fontWeight: 500, letterSpacing: "-0.02em", color: t.fg, marginBottom: "2.5rem" }}>Three layers. That's it.</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
           {[
-            { num: "01", title: "Structure", level: "SHOULD", desc: "Follow Diataxis: tutorials, how-to guides, reference, explanation. Recommended for new projects. Existing teams bring their docs as-is.", color: diataxisColors.tutorial, link: { text: "diataxis.fr", url: "https://diataxis.fr" } },
-            { num: "02", title: "Contract", level: "MUST", desc: "Three files: docspine.yaml (manifest), Justfile (build targets), docs-registry.yaml (registry). Framework-agnostic, CI-agnostic.", color: diataxisColors.howto, link: null },
-            { num: "03", title: "Aggregator", level: "MUST", desc: "Any conforming aggregator produces: a landing page, llms.txt for AI readability, and a search index. One hub for all your services.", color: diataxisColors.reference, link: { text: "llmstxt.org", url: "https://llmstxt.org" } },
+            { num: "01", title: "Structure", desc: "Follow Diataxis: tutorials, how-to guides, reference, explanation. Recommended for new projects. Existing teams bring their docs as-is.", color: diataxisColors.tutorial, link: { text: "diataxis.fr", url: "https://diataxis.fr" } },
+            { num: "02", title: "Contract", desc: "Three files: docspine.yaml (manifest), Justfile (build targets), docs-registry.yaml (registry). Framework-agnostic, CI-agnostic.", color: diataxisColors.howto, link: null },
+            { num: "03", title: "Aggregator", desc: "Any conforming aggregator produces: a landing page, llms.txt for AI readability, and a search index. One hub for all your services.", color: diataxisColors.reference, link: { text: "llmstxt.org", url: "https://llmstxt.org" } },
           ].map(layer => (
             <div key={layer.num} style={{ background: t.bgCard, border: `1px solid ${t.border}`, borderRadius: "10px", padding: "1.75rem", transition: "border-color 0.2s", cursor: "default", boxShadow: t.shadow }}
               onMouseEnter={e => e.currentTarget.style.borderColor = `${layer.color}${isDark ? '30' : '50'}`}
               onMouseLeave={e => e.currentTarget.style.borderColor = t.border}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "1rem" }}>
+              <div style={{ marginBottom: "1rem" }}>
                 <span style={{ fontFamily: mono, fontSize: "0.65rem", color: layer.color, fontWeight: 500 }}>{layer.num}</span>
-                <span style={{ fontFamily: mono, fontSize: "0.55rem", fontWeight: 600, color: layer.level === "MUST" ? emerald : t.fgDim, background: layer.level === "MUST" ? t.emeraldDim : t.pillBg, padding: "0.2rem 0.5rem", borderRadius: "4px", letterSpacing: "0.08em" }}>{layer.level}</span>
               </div>
               <h3 style={{ fontFamily: sans, fontSize: "1.05rem", fontWeight: 600, color: t.fg, letterSpacing: "-0.01em", marginBottom: "0.65rem" }}>{layer.title}</h3>
               <p style={{ fontFamily: sans, fontSize: "0.78rem", fontWeight: 400, color: t.fgDim, lineHeight: 1.6, marginBottom: layer.link ? "0.75rem" : 0 }}>{layer.desc}</p>
@@ -302,41 +301,6 @@ const DocspineLanding = () => {
               <div style={{ color: emerald, marginTop: "0.5rem" }}>"Here's the how-to guide from payment-api/how-to/authentication.md with code examples and the current OAuth2 flow."</div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── Comparison ── */}
-      <section style={{ padding: "5rem 2rem", maxWidth: "900px", margin: "0 auto" }}>
-        <Eyebrow>Honest Comparison</Eyebrow>
-        <h2 style={{ fontFamily: serif, fontSize: "2rem", fontWeight: 500, letterSpacing: "-0.02em", color: t.fg, marginBottom: "2rem" }}>Not another Backstage plugin.</h2>
-        <div style={{ background: t.bgCard, border: `1px solid ${t.border}`, borderRadius: "10px", overflow: "hidden", boxShadow: t.shadow }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: sans, fontSize: "0.75rem" }}>
-            <thead>
-              <tr style={{ borderBottom: `1px solid ${t.border}` }}>
-                {["", "TechDocs", "Antora", "Docspine"].map((h, i) => (
-                  <th key={h || i} style={{ padding: "1rem 1.25rem", textAlign: "left", fontWeight: 600, color: i === 3 ? emerald : t.fgDim, fontSize: "0.7rem", letterSpacing: "0.04em" }}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["What it is", "Plugin (Backstage)", "Tool (site generator)", "Spec + reference CLI"],
-                ["Framework lock-in", "MkDocs only", "AsciiDoc only", "Any framework"],
-                ["Platform lock-in", "Requires Backstage", "Requires Antora CLI", "CLI optional"],
-                ["Diataxis", "No opinion", "No opinion", "Recommended"],
-                ["AI readiness", "—", "—", "llms.txt + MCP server"],
-                ["IDE integration", "—", "—", "docspine mcp"],
-              ].map((row, ri) => (
-                <tr key={ri} style={{ borderBottom: ri < 5 ? `1px solid ${t.border}` : "none" }}>
-                  {row.map((cell, ci) => (
-                    <td key={ci} style={{ padding: "0.85rem 1.25rem", color: ci === 0 ? t.fgMuted : ci === 3 ? t.fg : t.fgDim, fontWeight: ci === 0 ? 500 : 400, fontFamily: ci === 0 ? sans : mono, fontSize: ci === 0 ? "0.75rem" : "0.68rem" }}>
-                      {cell === "—" ? <span style={{ color: t.fgSubtle }}>—</span> : cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 
