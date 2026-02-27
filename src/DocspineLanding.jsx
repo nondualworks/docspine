@@ -135,12 +135,12 @@ const DocspineLanding = () => {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
           {[
-            { label: "Spec", href: "#" },
+            { label: "Spec", href: "#spec" },
             { label: "CLI", href: "#get-started" },
-            { label: "Demo", href: "https://nondualworks.github.io/docspine-demo/" },
-            { label: "GitHub", href: "https://github.com/nondualworks" },
+            { label: "Demo", href: "https://nondualworks.github.io/docspine-demo/", external: true },
+            { label: "GitHub", href: "https://github.com/nondualworks/docspine-docs", external: true },
           ].map(item => (
-            <a key={item.label} href={item.href} target="_blank" style={{ fontFamily: sans, fontSize: "0.75rem", fontWeight: 500, color: t.fgDim, textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+            <a key={item.label} href={item.href} target={item.external ? "_blank" : "_self"} style={{ fontFamily: sans, fontSize: "0.75rem", fontWeight: 500, color: t.fgDim, textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
               onMouseEnter={e => e.target.style.color = t.fg} onMouseLeave={e => e.target.style.color = t.fgDim}>{item.label}</a>
           ))}
           <ThemeToggle />
@@ -208,7 +208,7 @@ const DocspineLanding = () => {
       </section>
 
       {/* ── The Spec ── */}
-      <section style={{ padding: "5rem 2rem", maxWidth: "1000px", margin: "0 auto" }}>
+      <section id="spec" style={{ padding: "5rem 2rem", maxWidth: "1000px", margin: "0 auto" }}>
         <Eyebrow>The Spec</Eyebrow>
         <h2 style={{ fontFamily: serif, fontSize: "2rem", fontWeight: 500, letterSpacing: "-0.02em", color: t.fg, marginBottom: "2.5rem" }}>Three layers. That's it.</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
@@ -368,11 +368,11 @@ const DocspineLanding = () => {
         </div>
         <div style={{ display: "flex", gap: "1.5rem" }}>
           {[
-            { text: "Spec", url: "#" },
-            { text: "Demo", url: "https://nondualworks.github.io/docspine-demo/" },
-            { text: "GitHub", url: "https://github.com/nondualworks" },
+            { text: "Spec", url: "#spec" },
+            { text: "Demo", url: "https://nondualworks.github.io/docspine-demo/", external: true },
+            { text: "GitHub", url: "https://github.com/nondualworks/docspine-docs", external: true },
           ].map(l => (
-            <a key={l.text} href={l.url} target="_blank" style={{ fontFamily: mono, fontSize: "0.65rem", color: t.fgDim, textDecoration: "none" }}>{l.text}</a>
+            <a key={l.text} href={l.url} target={l.external ? "_blank" : "_self"} style={{ fontFamily: mono, fontSize: "0.65rem", color: t.fgDim, textDecoration: "none" }}>{l.text}</a>
           ))}
         </div>
       </footer>
