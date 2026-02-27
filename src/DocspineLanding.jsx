@@ -135,7 +135,7 @@ const DocspineLanding = () => {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
           {[
-            { label: "Spec", href: "#spec" },
+            { label: "Approach", href: "#spec" },
             { label: "CLI", href: "#get-started" },
             { label: "Demo", href: "https://nondualworks.github.io/docspine-demo/", external: true },
             { label: "GitHub", href: "https://github.com/nondualworks/docspine-docs", external: true },
@@ -152,7 +152,7 @@ const DocspineLanding = () => {
       <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "8rem 2rem 4rem", position: "relative" }}>
         <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translateX(-50%)", width: "600px", height: "400px", background: `radial-gradient(ellipse, rgba(52,211,153,${t.glowAlpha}) 0%, transparent 70%)`, animation: "pulseGlow 6s ease infinite", pointerEvents: "none" }} />
 
-        <Eyebrow color={emerald}>Open Spec + Reference CLI</Eyebrow>
+        <Eyebrow color={emerald}>Open Approach + Reference CLI</Eyebrow>
 
         <h1 style={{ fontFamily: serif, fontSize: "clamp(2.8rem, 6vw, 4.5rem)", fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.08, color: t.fg, maxWidth: "800px", marginBottom: "1.5rem", transition: "color 0.35s" }}>
           Your AI is only as good<br />as your docs.
@@ -207,9 +207,9 @@ const DocspineLanding = () => {
         </p>
       </section>
 
-      {/* ── The Spec ── */}
+      {/* ── The Approach ── */}
       <section id="spec" style={{ padding: "5rem 2rem", maxWidth: "1000px", margin: "0 auto" }}>
-        <Eyebrow>The Spec</Eyebrow>
+        <Eyebrow>The Approach</Eyebrow>
         <h2 style={{ fontFamily: serif, fontSize: "2rem", fontWeight: 500, letterSpacing: "-0.02em", color: t.fg, marginBottom: "2.5rem" }}>Three layers. That's it.</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
           {[
@@ -304,6 +304,41 @@ const DocspineLanding = () => {
         </div>
       </section>
 
+      {/* ── Comparison ── */}
+      <section style={{ padding: "5rem 2rem", maxWidth: "900px", margin: "0 auto" }}>
+        <Eyebrow>How Docspine Fits In</Eyebrow>
+        <h2 style={{ fontFamily: serif, fontSize: "2rem", fontWeight: 500, letterSpacing: "-0.02em", color: t.fg, marginBottom: "2rem" }}>A different approach.</h2>
+        <div style={{ background: t.bgCard, border: `1px solid ${t.border}`, borderRadius: "10px", overflow: "hidden", boxShadow: t.shadow }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: sans, fontSize: "0.75rem" }}>
+            <thead>
+              <tr style={{ borderBottom: `1px solid ${t.border}` }}>
+                {["", "TechDocs", "Antora", "Docspine"].map((h, i) => (
+                  <th key={h || i} style={{ padding: "1rem 1.25rem", textAlign: "left", fontWeight: 600, color: i === 3 ? emerald : t.fgDim, fontSize: "0.7rem", letterSpacing: "0.04em" }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["What it is", "Plugin (Backstage)", "Tool (site generator)", "Approach + reference CLI"],
+                ["Framework lock-in", "MkDocs only", "AsciiDoc only", "Any framework"],
+                ["Platform lock-in", "Requires Backstage", "Requires Antora CLI", "CLI optional"],
+                ["Diataxis", "No opinion", "No opinion", "Recommended"],
+                ["AI readiness", "—", "—", "llms.txt + MCP server"],
+                ["IDE integration", "—", "—", "docspine mcp"],
+              ].map((row, ri) => (
+                <tr key={ri} style={{ borderBottom: ri < 5 ? `1px solid ${t.border}` : "none" }}>
+                  {row.map((cell, ci) => (
+                    <td key={ci} style={{ padding: "0.85rem 1.25rem", color: ci === 0 ? t.fgMuted : ci === 3 ? t.fg : t.fgDim, fontWeight: ci === 0 ? 500 : 400, fontFamily: ci === 0 ? sans : mono, fontSize: ci === 0 ? "0.75rem" : "0.68rem" }}>
+                      {cell === "—" ? <span style={{ color: t.fgSubtle }}>—</span> : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* ── Credits ── */}
       <section style={{ padding: "5rem 2rem 3rem", maxWidth: "900px", margin: "0 auto" }}>
         <Eyebrow>Standing on Shoulders</Eyebrow>
@@ -332,7 +367,7 @@ const DocspineLanding = () => {
         </div>
         <div style={{ display: "flex", gap: "1.5rem" }}>
           {[
-            { text: "Spec", url: "#spec" },
+            { text: "Approach", url: "#spec" },
             { text: "Demo", url: "https://nondualworks.github.io/docspine-demo/", external: true },
             { text: "GitHub", url: "https://github.com/nondualworks/docspine-docs", external: true },
           ].map(l => (
